@@ -1,0 +1,7 @@
+wsdl2java -server -frontend jaxws21//指定生成2.1版本 http://localhost:5555/myservice?wsdl
+
+wsdl2java -server -impl//生成webservice实现代码 -frontend jaxws21//指定生成2.1版本 http://localhost:5555/myservice?wsdl//ws地址
+
+wsdl2java -server -impl -frontend jaxws21 http://localhost:5555/myservice?wsdl
+
+wsdl2java -client -frontend jaxws21 D:/tmp/workspace/acars/cxf/myservice.wsdl

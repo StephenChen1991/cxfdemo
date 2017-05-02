@@ -33,11 +33,6 @@ public class JaxbTest
 		marshaller.marshal(people, System.out);
 		
 		
-		
-		
-		
-		
-		
 		System.out.println("--------------------------------");
 
 		Unmarshaller unmarshaller = context.createUnmarshaller();

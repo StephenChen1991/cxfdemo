@@ -1,4 +1,4 @@
-package live.chenchen.cxf2;
+package live.chenchen.cxf3;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 

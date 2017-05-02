@@ -1,4 +1,4 @@
-package live.chenchen.cxf2;
+package live.chenchen.cxf3;
 
 public class MyServiceImpl implements MyService
 {
@@ -10,10 +10,10 @@ public class MyServiceImpl implements MyService
 		return "hello: " + username + ", " + password;
 	}
 	
-	@Override
-	public int add(int a, int b)
-	{
-		return a + b;
-	}
+//	@Override
+//	public int add(int a, int b)
+//	{
+//		return a + b;
+//	}
 
 }

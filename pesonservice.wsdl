@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="MyServiceImplService" targetNamespace="http://cxf2.chenchen.live/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cxf2.chenchen.live/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+	<xs:schema elementFormDefault="unqualified" targetNamespace="http://cxf2.chenchen.live/" version="1.0" xmlns:tns="http://cxf2.chenchen.live/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:complexType name="IdType">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:int"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PersonType">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:string"></xsd:element>
+			<xsd:element name="address" type="xsd:string"></xsd:element>
+			<xsd:element name="birthday" type="xsd:dateTime"></xsd:element>
+			<xsd:element name="school" type="tns:SchoolType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RestaurantType">
+		<xsd:sequence>
+			<xsd:element name="restaurantName" type="xsd:string"></xsd:element>
+			<xsd:element name="restaurantAddress" type="xsd:string"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SchoolType">
+		<xsd:sequence>
+			<xsd:element name="schoolName" type="xsd:string"></xsd:element>
+			<xsd:element name="restaurant" type="tns:RestaurantType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="getPersonByIdRequest" type="tns:IdType"></xsd:element>
+	<xsd:element name="getPersonByIdResponse" type="tns:PersonType"></xsd:element>
+	</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPersonByIdRequest">
+  	<wsdl:part name="parameters" element="tns:getPersonByIdRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonByIdResponse">
+  	<wsdl:part name="parameters" element="tns:getPersonByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MyServicePortType">
+  	<wsdl:operation name="getPersonById">
+  		<wsdl:input message="tns:getPersonByIdRequest" name="getPersonByIdRequest"></wsdl:input>
+  		<wsdl:output message="tns:getPersonByIdResponse" name="getPersonByIdResponse"></wsdl:output>
+  	</wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyServiceSoap" type="tns:MyServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPersonById">
+    	<soap:operation soapAction="" style="document"/>
+    	
+    	<wsdl:input name="getPersonByIdRequest">
+    		<soap:body use="literal"/>
+    	</wsdl:input>
+    	
+    	<wsdl:output name="getPersonByIdResponse">
+    		<soap:body use="literal"/>
+    	</wsdl:output>
+    
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="MyService">
+    <wsdl:port binding="tns:MyServiceSoap" name="MyServiceSoap">
+      <soap:address location="http://localhost:5555/myservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
