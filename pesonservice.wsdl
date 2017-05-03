@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="MyServiceImplService" targetNamespace="http://cxf2.chenchen.live/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cxf2.chenchen.live/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
-	<xs:schema elementFormDefault="unqualified" targetNamespace="http://cxf2.chenchen.live/" version="1.0" xmlns:tns="http://cxf2.chenchen.live/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:schema elementFormDefault="unqualified" targetNamespace="http://cxf2.chenchen.live/" version="1.0" xmlns:tns="http://cxf2.chenchen.live/"
+	 xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
 
 	<xsd:complexType name="IdType">
 		<xsd:sequence>
@@ -27,8 +28,27 @@
 			<xsd:element name="restaurant" type="tns:RestaurantType"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
-	<xsd:element name="getPersonByIdRequest" type="tns:IdType"></xsd:element>
-	<xsd:element name="getPersonByIdResponse" type="tns:PersonType"></xsd:element>
+	<xsd:complexType name="ArrayOfPersonType">
+		<xsd:sequence>
+			<xsd:element name="Persons" type="tns:PersonType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PemissionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="READ_ONLY"></xsd:enumeration>
+			<xsd:enumeration value="READ_WRITE"></xsd:enumeration>
+			<xsd:enumeration value="FULL_CONTROL"></xsd:enumeration>
+			<xsd:enumeration value="NONE"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="AttachmentType">
+		<xsd:sequence>
+			<xsd:element name="content" type="xsd:base64Binary" 
+			xmime:expectedContentTypes="application/octet-stream"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="getPersonByIdRequest" type="tns:AttachmentType"></xsd:element>
+	<xsd:element name="getPersonByIdResponse" type="tns:ArrayOfPersonType"></xsd:element>
 	</xs:schema>
   </wsdl:types>
   <wsdl:message name="getPersonByIdRequest">
@@ -61,7 +81,7 @@
   
   <wsdl:service name="MyService">
     <wsdl:port binding="tns:MyServiceSoap" name="MyServiceSoap">
-      <soap:address location="http://localhost:5555/myservice"/>
+      <soap:address location="http://localhost:6666/myservice"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

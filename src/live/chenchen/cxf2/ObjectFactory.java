@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IdType }
+     * Create an instance of {@link AttachmentType }
      * 
      */
-    public IdType createIdType() {
-        return new IdType();
+    public AttachmentType createAttachmentType() {
+        return new AttachmentType();
     }
 
     /**
-     * Create an instance of {@link PersonType }
+     * Create an instance of {@link ArrayOfPersonType }
      * 
      */
-    public PersonType createPersonType() {
-        return new PersonType();
+    public ArrayOfPersonType createArrayOfPersonType() {
+        return new ArrayOfPersonType();
     }
 
     /**
@@ -67,21 +67,37 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IdType }{@code >}}
+     * Create an instance of {@link PersonType }
      * 
      */
-    @XmlElementDecl(namespace = "http://cxf2.chenchen.live/", name = "getPersonByIdRequest")
-    public JAXBElement<IdType> createGetPersonByIdRequest(IdType value) {
-        return new JAXBElement<IdType>(_GetPersonByIdRequest_QNAME, IdType.class, null, value);
+    public PersonType createPersonType() {
+        return new PersonType();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PersonType }{@code >}}
+     * Create an instance of {@link IdType }
+     * 
+     */
+    public IdType createIdType() {
+        return new IdType();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AttachmentType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://cxf2.chenchen.live/", name = "getPersonByIdRequest")
+    public JAXBElement<AttachmentType> createGetPersonByIdRequest(AttachmentType value) {
+        return new JAXBElement<AttachmentType>(_GetPersonByIdRequest_QNAME, AttachmentType.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ArrayOfPersonType }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://cxf2.chenchen.live/", name = "getPersonByIdResponse")
-    public JAXBElement<PersonType> createGetPersonByIdResponse(PersonType value) {
-        return new JAXBElement<PersonType>(_GetPersonByIdResponse_QNAME, PersonType.class, null, value);
+    public JAXBElement<ArrayOfPersonType> createGetPersonByIdResponse(ArrayOfPersonType value) {
+        return new JAXBElement<ArrayOfPersonType>(_GetPersonByIdResponse_QNAME, ArrayOfPersonType.class, null, value);
     }
 
 }

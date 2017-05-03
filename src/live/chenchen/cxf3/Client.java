@@ -8,7 +8,7 @@ public class Client
 	{
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 		
-		factory.setAddress("http://localhost:5555/myservice");
+		factory.setAddress("http://localhost:6666/myservice");
 		factory.setServiceClass(MyService.class);
 		
 		MyService myService = (MyService)factory.create();
